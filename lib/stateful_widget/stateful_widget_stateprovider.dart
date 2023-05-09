@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_practice/main.dart';
@@ -10,12 +11,27 @@ class StatefulWidgetStateProvider extends ConsumerStatefulWidget {
 }
 
 class _StatefulWidgetStateProviderState extends ConsumerState<StatefulWidgetStateProvider> {
+
+  @override
+  void initState() {
+    super.initState();
+    if (kDebugMode) {
+      print(ref.read(number));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-
-
-
     final count = ref.watch(number);
+
+    ref.listen(number, (previous, next) {
+      if(next==5){
+        if (kDebugMode) {
+          print('This is number $next');
+        }
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('4. Stateful Widget - StateProvider'),

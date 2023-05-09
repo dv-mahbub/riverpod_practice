@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
 
             //5. stateful widget using global single variable - stateProvider
             ElevatedButton(
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>const StatefulWidgetSignleVariableStateProvider())),
+              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>const StatefulWidgetSingleVariableStateProvider())),
               child: const Text('5. Stateless Widget Single Variable - StateProvider'),
             ),
             const SizedBox(height: 20,),
