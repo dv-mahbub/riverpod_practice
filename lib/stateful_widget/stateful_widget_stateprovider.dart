@@ -1,15 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_practice/main.dart';
 
-class StatefulWidgetStateProvider extends StatefulWidget {
+class StatefulWidgetStateProvider extends ConsumerStatefulWidget {
   const StatefulWidgetStateProvider({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidgetStateProvider> createState() => _StatefulWidgetStateProviderState();
+  ConsumerState<StatefulWidgetStateProvider> createState() => _StatefulWidgetStateProviderState();
 }
 
-class _StatefulWidgetStateProviderState extends State<StatefulWidgetStateProvider> {
+class _StatefulWidgetStateProviderState extends ConsumerState<StatefulWidgetStateProvider> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('stateful widget stateProvider'),));
+
+
+
+    final count = ref.watch(number);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('4. Stateful Widget - StateProvider'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('You have pressed the button for $count time(s)'),
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: (){
+                //ref.watch(number.notifier).state++;
+                ref.watch(number.notifier).update((state) => state+1);
+              },
+              child: const Text(' + '),
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: (){
+                ref.invalidate(number);
+                //ref.refresh(number);
+              },
+              child: const Text('Refresh'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
