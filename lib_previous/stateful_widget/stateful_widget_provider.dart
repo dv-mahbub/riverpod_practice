@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../main.dart';
 
 class StatefulWidgetRiverpod extends ConsumerStatefulWidget {
-  const StatefulWidgetRiverpod({Key? key}) : super(key: key);
+  const StatefulWidgetRiverpod({super.key});
 
   @override
   ConsumerState<StatefulWidgetRiverpod> createState() =>

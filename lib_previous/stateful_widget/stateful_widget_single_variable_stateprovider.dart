@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../main.dart';
 
 class StatefulWidgetSingleVariableStateProvider extends ConsumerStatefulWidget {
-  const StatefulWidgetSingleVariableStateProvider({Key? key}) : super(key: key);
+  const StatefulWidgetSingleVariableStateProvider({super.key});
 
   @override
   ConsumerState<StatefulWidgetSingleVariableStateProvider> createState() =>

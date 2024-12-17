@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../main.dart';
 
 class StatelessWidgetRiverpod extends ConsumerWidget {
-  const StatelessWidgetRiverpod({Key? key}) : super(key: key);
+  const StatelessWidgetRiverpod({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
