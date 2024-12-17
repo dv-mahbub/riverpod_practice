@@ -12,10 +12,14 @@ final textProvider = Provider<String>((ref) {
   return 'text';
 });
 
+final countStateProvider = StateProvider<int>((ref) {
+  return 0;
+});
+
 void main() {
   runApp(
     const ProviderScope(
-      child: MyApp3(),
+      child: MyApp4(),
     ),
   );
 }
@@ -94,6 +98,38 @@ class _MyApp3State extends ConsumerState<MyApp3> {
         body: Center(
           child: Text(
             ref.watch(textProvider),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp4 extends StatelessWidget {
+  const MyApp4({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Consumer(builder: (_, WidgetRef ref, __) {
+                final count = ref.watch(countStateProvider);
+                return Text('Count: $count');
+              }),
+              Consumer(builder: (_, WidgetRef ref, __) {
+                return FilledButton(
+                  onPressed: () {
+                    ref.read(countStateProvider.notifier).state =
+                        ref.read(countStateProvider.notifier).state + 3;
+                  },
+                  child: const Text('Change'),
+                );
+              }),
+            ],
           ),
         ),
       ),
