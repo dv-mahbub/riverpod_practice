@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/main.dart';
+import '../main.dart';
 
 class StatefulWidgetRiverpod extends ConsumerStatefulWidget {
   const StatefulWidgetRiverpod({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<StatefulWidgetRiverpod> createState() => _StatefulWidgetRiverpodState();
+  ConsumerState<StatefulWidgetRiverpod> createState() =>
+      _StatefulWidgetRiverpodState();
 }
 
-class _StatefulWidgetRiverpodState extends ConsumerState<StatefulWidgetRiverpod> {
+class _StatefulWidgetRiverpodState
+    extends ConsumerState<StatefulWidgetRiverpod> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +21,7 @@ class _StatefulWidgetRiverpodState extends ConsumerState<StatefulWidgetRiverpod>
       ),
       body: Center(
         child: Consumer(
-          builder: (context, ref, child){
+          builder: (context, ref, child) {
             final message = ref.watch(welcome);
             return Text(message);
           },

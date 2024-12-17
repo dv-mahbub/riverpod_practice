@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/main.dart';
+import '../main.dart';
 
 class StatelessWidgetUsingConsumer extends StatelessWidget {
   const StatelessWidgetUsingConsumer({Key? key}) : super(key: key);
@@ -13,12 +13,10 @@ class StatelessWidgetUsingConsumer extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Consumer(
-          builder: (context, ref, child){
-            final message = ref.watch(welcome);
-            return Text(message);
-          }
-        ),
+        child: Consumer(builder: (context, ref, child) {
+          final message = ref.watch(welcome);
+          return Text(message);
+        }),
       ),
     );
   }

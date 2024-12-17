@@ -1,16 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/main.dart';
+import '../main.dart';
 
 class StatefulWidgetSingleVariableStateProvider extends ConsumerStatefulWidget {
   const StatefulWidgetSingleVariableStateProvider({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<StatefulWidgetSingleVariableStateProvider> createState() => _StatefulWidgetSingleVariableStateProviderState();
+  ConsumerState<StatefulWidgetSingleVariableStateProvider> createState() =>
+      _StatefulWidgetSingleVariableStateProviderState();
 }
 
-class _StatefulWidgetSingleVariableStateProviderState extends ConsumerState<StatefulWidgetSingleVariableStateProvider> {
+class _StatefulWidgetSingleVariableStateProviderState
+    extends ConsumerState<StatefulWidgetSingleVariableStateProvider> {
   // ignore: prefer_typing_uninitialized_variables
   var count;
 
@@ -36,18 +38,22 @@ class _StatefulWidgetSingleVariableStateProviderState extends ConsumerState<Stat
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('You have pressed this button for $count time(s)'),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
-              onPressed: (){
-                ref.watch(number.notifier).update((state) => state+1);
+              onPressed: () {
+                ref.watch(number.notifier).update((state) => state + 1);
                 //ref.read(number.notifier).state+1;
               },
               child: const Text(' + '),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
               //refresh
-              onPressed: (){
+              onPressed: () {
                 //ref.invalidate(number);
 
                 // ignore: unused_result
