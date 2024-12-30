@@ -1,10 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 final numberFutureProvider = FutureProvider<int>((ref) async {
   await Future.delayed(const Duration(seconds: 2));
-  return 33;
+  return Random().nextInt(100);
 });
 
 class FutureProviderExample extends StatelessWidget {
@@ -31,9 +33,11 @@ class FutureProviderExample extends StatelessWidget {
             ),
             FilledButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        const FutureProviderExample2ndPage()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const FutureProviderExample2ndPage(),
+                  ),
+                );
               },
               child: const Text('Go'),
             ),
@@ -56,14 +60,27 @@ class FutureProviderExample2ndPage extends StatelessWidget {
           children: [
             Consumer(
               builder: (__, WidgetRef ref, _) {
-                return ref.watch(numberFutureProvider).when(
-                    data: (data) => Text('The number is: $data'),
-                    error: (error, stackTrace) {
-                      Logger().e(error);
-                      return Text(
-                          'Error: $error, Stack trace: ${stackTrace.toString()}');
-                    },
-                    loading: () => const CircularProgressIndicator());
+                return Column(
+                  children: [
+                    ref.watch(numberFutureProvider).when(
+                        data: (data) => Text('The number is: $data'),
+                        error: (error, stackTrace) {
+                          Logger().e(error);
+                          return Text(
+                              'Error: $error, Stack trace: ${stackTrace.toString()}');
+                        },
+                        loading: () => const CircularProgressIndicator()),
+                    FilledButton(
+                      onPressed: () {
+                        // ref.invalidate(numberFutureProvider);
+                        final refreshedValue =
+                            ref.refresh(numberFutureProvider);
+                        Logger().i('Provider refreshed: $refreshedValue');
+                      },
+                      child: const Text('Refresh'),
+                    ),
+                  ],
+                );
               },
             ),
             FilledButton(
