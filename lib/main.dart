@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/8_types_provider/state_notifier_provider2.dart';
+import 'package:riverpod_practice/8_types_provider/future_provider.dart';
 
 void main() {
   runApp(
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: StateNotifierProviderExample2(),
+      home: FutureProviderExample(),
     );
   }
 }
