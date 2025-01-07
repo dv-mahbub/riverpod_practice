@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_practice/8_types_provider/stream_provider.dart';
+import 'package:riverpod_practice/8_types_provider/change_notifier_provider/change_notifier_provider_example.dart';
 
 void main() {
   runApp(
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: StreamProviderExample(),
+      home: ChangeNotifierProviderExample(),
     );
   }
 }
