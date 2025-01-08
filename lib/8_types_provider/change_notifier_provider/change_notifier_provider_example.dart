@@ -15,7 +15,6 @@ class ChangeNotifierProviderExample extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Consumer(builder: (__, ref, _) {
-          final countProvider = ref.watch(countChangeNotifierProvider);
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
